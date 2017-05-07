@@ -11,8 +11,9 @@ import java.util.TreeMap;
  *
  */
 public class Food {
-    Map<String, NutritionalElement> nutritionals = new TreeMap<>();
-    Map<String, NutritionalElement> products = new TreeMap<>();
+    private Map<String, NutritionalElement> nutritionals = new TreeMap<>();
+    private Map<String, NutritionalElement> products = new TreeMap<>();
+    private Map<String, NutritionalElement> recipes = new TreeMap<>();
 
     /**
      * Define a new raw material. The nutritional values are specified for a
@@ -108,7 +109,9 @@ public class Food {
      *         interface
      */
     public Collection<NutritionalElement> recipes() {
-	return null;
+	Collection<NutritionalElement> r;
+	r = recipes.values();
+	return r;
     }
 
     /**
@@ -119,7 +122,7 @@ public class Food {
      * @return a recipe though the {@link NutritionalElement} interface
      */
     public NutritionalElement getRecipe(String name) {
-	return null;
+	return recipes.get(name);
     }
 
 }

@@ -16,10 +16,6 @@ public class Recipe implements NutritionalElement {
     	private String name;
     	private Map<String, Ingredient> ingredients = new TreeMap<>();
     	private Food food;
-        private double kCal;
-        private double proteins;
-        private double carbs;
-        private double fats;
     
 	/**
 	 * Recipe constructor.
@@ -54,19 +50,43 @@ public class Recipe implements NutritionalElement {
 	}
 
 	public double getCalories() {
-		return kCal;
+	    double totweight = 0;
+	    double totkCal = 0;
+	    for (Ingredient i : ingredients.values())  {
+		totweight += i.getQuantity();
+		totkCal += i.getRawMaterial().getCalories();
+	    }
+		return totkCal/totweight;
 	}
 
 	public double getProteins() {
-		return proteins;
+	    double totweight = 0;
+	    double totProteins = 0;
+	    for (Ingredient i : ingredients.values())  {
+		totweight += i.getQuantity();
+		totProteins += i.getRawMaterial().getProteins();
+	    }
+		return totProteins/totweight;
 	}
 
 	public double getCarbs() {
-		return carbs;
+	    double totweight = 0;
+	    double totCarbs = 0;
+	    for (Ingredient i : ingredients.values())  {
+		totweight += i.getQuantity();
+		totCarbs += i.getRawMaterial().getCarbs();
+	    }
+		return totCarbs/totweight;
 	}
 
 	public double getFat() {
-		return fats;
+	    double totweight = 0;
+	    double totFat = 0;
+	    for (Ingredient i : ingredients.values())  {
+		totweight += i.getQuantity();
+		totFat += i.getRawMaterial().getFat();
+	    }
+		return totFat/totweight;
 	}
 
   public boolean per100g() {
